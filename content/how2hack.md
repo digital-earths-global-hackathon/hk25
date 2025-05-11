@@ -12,7 +12,7 @@ The following discussion of teams and tools is intended to be used within a node
 
 We want to connect people working on different science topics. The primary unit of organization across nodes will be ‘science teams’ which are user proposed. The current list of science teams and topics is described on a [Science Teams webpage](https://digital-earths-global-hackathon.github.io/hk25/scienceteams/) on the hackathon website.
 
-The science teams will communicate in the following ways:
+**The science teams will communicate in the following ways:**
 
 - Each science team will have a mattermost channel `hk25-<uid>` (e.g. `hk25-MCS`).
 
@@ -26,38 +26,39 @@ Zoom calls can be arranged via Mattermost.
 
     - See this [github issues quickstart](https://docs.github.com/en/issues/tracking-your-work-with-issues/configuring-issues/quickstart) tutorial for working with issues on Github. Mostly you will just want to filter issues by label for the science team (e.g. `hk25-MCS`), and you can add comments, figures.
 
-    - Make sure your issue has a label corresponding to the science team (e.g. hk25-MCS). See (managing github labels)[https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels] for more information.
+    - Make sure your issue has a label corresponding to the science team (e.g. hk25-MCS). See [managing github labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) for more information.
 
 - To share code or scripts, you can push them up to the github repository for each team. Contact the team lead or a local contact who knows about github if you are not experienced doing this. Downloading scripts from github is a simple click.
 
-If you want to join a science team:
+**If you want to join a science team:**
 
 - Join the mattermost channel for the team (see Mattermost): You can search for the channel and join it
     - Go to 'Find Channels' at the upper left, and search for hk25-[TeamName]. Clicking on it will add you to the channel
 
     - or email the organizer (see the website above or github README pages for each team)
 
-If you do not see a science team of interest:
+**If you do not see a science team of interest:**
 
 - We encourage you to see if there is a team which is already related and join it
 
-- If not, create your own! See the instructions (README) in the (hackathon science teams repository)[https://github.com/digital-earths-global-hackathon/hk25-teams]. It would help to have some knowledge of github, or team up with someone who does.
+- If not, create your own! See the instructions (README) in the [hackathon science teams repository](https://github.com/digital-earths-global-hackathon/hk25-teams). It would help to have some knowledge of github, or team up with someone who does.
 
 ## Mattermost
 
 Mattermost will serve as the instant messenger service across nodes (and within nodes). One can easily start written conversations across nodes, open public and private channels to discuss certain topics. We will use the *WCRP Lighthouse mattermost team*. All participants will receive an invite to join the service. In case you haven't received the invite to join, please [contact us](mailto:yuting.wu@mpimet.mpg.de).
 
-Mattermost works like Slack or other instant messaging clients, either through a web browser or dedicated app on a computer or mobile device. We recommend the desktop app.
+Mattermost works like Discord, Slack or other instant messaging clients, either through a web browser or dedicated app on a computer or mobile device. We recommend the desktop app.
 
 Mattermost is organized into ‘channels’. The hackathon channels for participants will all have `hk25-` in the beginning of them. You can find channels in the upper left search box (start with `hk25-`).
 
 Channels are organized as follows:
-- All hackathon channels should start with `hk25-`
+- Hackathon channels start with `hk25-`
 - Individual nodes can create their own internal channels with another descriptor, e.g. `hk25-UK`
 - There are 2 general channels
     - Broadcasting general information: (`hk25-Global Commons`)
     - A channel for data questions (`hk25-Data-Model Questions`)
 - Each Science Team (see below) will have a channel with its name (e.g. `hk25-MCS)` for communication
+- You can customize your interface by grouping the channels you follow into **categories** and into **favorites**.  This can be a helpful filter.
 
 ## Github
 

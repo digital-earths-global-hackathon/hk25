@@ -75,7 +75,7 @@ Generalized smooth-level vertical coordinate ([Leuenberger et al., 2010][L2010])
 
 #### Code
 
-- icon-mpim:feature-dy3ha-p-experiments at commit b9c9da5cef4e7faadf13c2fe213de0c990c94bf3 (https://gitlab.dkrz.de/icon/icon-mpim/-/tree/b9c9da5cef4e7faadf13c2fe213de0c990c94bf3)
+- [icon-mpim:feature-dy3ha-p-experiments at commit b9c9da5cef4e7faadf13c2fe213de0c990c94bf3](https://gitlab.dkrz.de/icon/icon-mpim/-/tree/b9c9da5cef4e7faadf13c2fe213de0c990c94bf3)
 
 ---
 
@@ -93,32 +93,45 @@ Generalized smooth-level vertical coordinate ([Leuenberger et al., 2010][L2010])
 
 Due to crashes, of technical nature as it turned out later, some adjustments of the model setup happened during the course of the simulation:
 
-- 2020-05-28T00:00:00Z
-  - dt_atm: 20s -> 15s
-  - ozone: prognostic -> external data
-  - zmaxcloudy: 33km -> 22.5km (1)
-  - correction for proper daily means of 3d fields on pressure levels
-- 2020-06-05T00:00:00Z
-  - dt_atm: 15s -> 20s
-- 2020-07-27T00:00:00Z
-  - dt_atm: 20s -> 18s and dynamics substeps: 5 -> 6
-- 2020-08-04T00:00:00Z
-  - dt_atm: 18s -> 20s and dynamics substeps: 6 -> 5
-
-(1) zmaxcloudy is the maximum height up to which cloud microphysics is computed
+| Simulation date      | Change                                                   |
+| -------------------- | -------------------------------------------------------- |
+| 2020-05-20T00:00:00Z | Rayleigh damping of w above 44km: **1.** -> 0.9999       |
+| 2020-05-28T00:00:00Z | Rayleigh damping of w above 44km: 0.9999 -> **1.**       |
+| 2020-05-28T00:00:00Z | ozone: prognostic -> external data                       |
+|                      | maximum height cloud microphysics: 33km -> 22.5km        |
+|                      | time mean 3d field: 4 x 6-hourly inst. -> all time steps |
+|                      | dt_atm: **20s** -> 15s                                   |
+| 2020-06-05T00:00:00Z | dt_atm: 15s -> **20s**                                   |
+| 2020-07-27T00:00:00Z | dt_atm: **20s** -> 18s and dynamics substeps: **5** -> 6 |
+| 2020-08-04T00:00:00Z | dt_atm: 18s -> **20s** and dynamics substeps: 6 -> **5** |
 
 ---
 
 ### Output
 
+#### Processing
+
+The following steps are applied to remap data from the ICON model grid to the HEALPix grids with 3d fields on pressure levels:
+
+1. 3d fields: vertical interpolation to pressure levels
+  - start to 2020-05-27: time steps 06:00, 12:00, 18:00 and 00:00
+  - 2020-05-28 to end: all model time steps
+2. Time mean output:
+  - 2d: all model time steps
+  - 3d: vertically interpolated time steps
+3. Nearest neighbor interpolation from the R2B10 ICON grid (~2.5 km) to the HEALPix z12 grid (~1.6 km)
+4. Arithmetic averaging to lower HEALPix grids: z12 -> z11 -> z10 -> … -> z0
+5. Delete z12
+
 #### Standard output
 
-The standard output follows the data request (https://digital-earths-global-hackathon.github.io/hosting/technical/data_request.html) with a few deviations:
-- `mrso`, the soil liquid water content in kg/m2 is available as 3d field for 5 soil levels instead of a vertical sum over all soil levels.
-- `swe`, the liquid water content of surface snow is not available over land ice so that this field is zero in areas like Antarctica and Greenland
+The standard output follows the [data request](https://digital-earths-global-hackathon.github.io/hosting/technical/data_request.html) with a few deviations:
+- `mrso`, the soil liquid water content is available as 3d field for 5 soil levels, in units of m = 1000 kg/m2, instead of a vertical sum over all soil levels in kg/m2.
+- `swe`, the liquid water content of surface snow is in units of m = 1000 kg/m2, and is not defined over land ice in the ICON land model, so that this field is zero in areas like Antarctica and Greenland.
 
 ### Additional output
 
+- 3d fields on 5 additional pressure levels: 0.05, 0.1, 0.2, 0.5, and 2 hPa
 - `rva`, relative vorticity in the atmosphere in 1/s, as 3d field on 3 pressure levels: 850, 500 and 300 hPa, 3-hourly, instantaneous
 - Energy content of the atmosphere in J/m2, 3-hourly, instantaneous
   - `egpvi`: geopotential energy content
@@ -146,11 +159,13 @@ The standard output follows the data request (https://digital-earths-global-hack
 
 ---
 
-### Quickplots
+### Quickplots and Tables
 
-The so-called "quickplots" provide a preview of the model simulation fields at HEALPix zoom level 7, including for some fields differences to ERA5 and CERES.
+The so-called "quickplots" provide a preview of the model simulation fields including - for some fields - differences to ERA5 and CERES. Plots were made from HEALpix zoom level 7 data after interpolation to a 1°x1° longitude latitude grid. Tables show minimum, global mean and maximum values of 2d fields on HEALpix zoom level 7.
 
-Three collections of plots are contained in [icon_r2b10l90_d3hp003](https://swiftbrowser.dkrz.de/public/dkrz_e59fa4f2fcac49f2aec87e9b1d1ae0eb/icon_r2b10l90_d3hp003/):
+Tables and three collections of plots are contained in [icon_r2b10l90_d3hp003](https://swiftbrowser.dkrz.de/public/dkrz_e59fa4f2fcac49f2aec87e9b1d1ae0eb/icon_r2b10l90_d3hp003/):
+- Folder TABLE:
+  - table_d3hp003_z7_\<time period\>.\<html,txt\>: global min, mean and max of 2d fields
 - Folders d3hp003-ERA5_\<time period\>:
   - atm_zon.html: zonal means of 3d fields and where possible differences to ERA5
   - bot_map.html: 2d model fields and where possible differences to ERA5
@@ -184,10 +199,26 @@ Available time periods:
 
 [H2023]: https://doi.org/10.5194/gmd-16-779-2023 'Hohenegger, C., Korn, P., Linardakis, L., Redler, R., Schnur, R., Adamidis, P., et al. (2023). ICON-Sapphire: simulating the components of the Earth system and their interactions at kilometer and subkilometer scales. Geosci. Model Dev., 16. https://doi.org/10.5194/gmd-16-779-2023'
 
-[L2010]:  https://doi.org/10.1175/2010MWR3307.1 'Leuenberger, D., Koller, M., Fuhrer, O., & Schär, C. (2010). A generalization of the SLEVE vertical coordinate. Monthly Weather Review, 138(9). https://doi.org/10.1175/2010MWR3307.1'
+[L2010]: https://doi.org/10.1175/2010MWR3307.1 'Leuenberger, D., Koller, M., Fuhrer, O., & Schär, C. (2010). A generalization of the SLEVE vertical coordinate. Monthly Weather Review, 138(9). https://doi.org/10.1175/2010MWR3307.1'
 
 [S2025]: https://doi.org/10.5194/egusphere-2025-509 'Segura, H., Pedruzo-Bagazgoitia, X., Weiss, P., Müller, S. K., Rackow, T., Lee, J., et al. (2025). nextGEMS: entering the era of kilometer-scale Earth system modeling. EGUsphere [preprint]. https://doi.org/10.5194/egusphere-2025-509'
  
 [S2019]: https://doi.org/10.1186/s40645-019-0304-z 'Stevens, B., Satoh, M., Auger, L. et al. (2019). DYAMOND: the DYnamics of the Atmospheric general circulation Modeled On Non-hydrostatic Domains. Prog Earth Planet Sci 6, 61. https://doi.org/10.1186/s40645-019-0304-z'
 
 [Z2015]: https://doi.org/10.1002/qj.2378 'Zängl, G., Reinert, D., Ripodas, P., & Baldauf, M. (2015). The ICON (ICOsahedral Non-hydrostatic) modelling framework of DWD and MPI-M: Description of the non-hydrostatic dynamical core. Quarterly Journal of the Royal Meteorological Society, 141(687). https://doi.org/10.1002/qj.2378'
+
+
+
+Cariolle, D. and Teyssèdre, H. (2007). A revised linear ozone photochemistry parameterization for use in transport and general circulation models: multi-annual simulations. Atmos. Chem. Phys., 7. <https://doi.org/10.5194/acp-7-2183-2007>
+
+Giorgetta, M. A., Brokopf, R., Crueger, T., Esch, M., Fiedler, S., Helmert, J., et al. (2018). ICON-A, the atmosphere component of the ICON Earth system model: I. Model description. Journal of Advances in Modeling Earth Systems, 10. <https://doi.org/10.1029/2017MS001242>
+
+Hohenegger, C., Korn, P., Linardakis, L., Redler, R., Schnur, R., Adamidis, P., et al. (2023). ICON-Sapphire: simulating the components of the Earth system and their interactions at kilometer and subkilometer scales. Geosci. Model Dev., 16. <https://doi.org/10.5194/gmd-16-779-2023>
+
+Leuenberger, D., Koller, M., Fuhrer, O., & Schär, C. (2010). A generalization of the SLEVE vertical coordinate. Monthly Weather Review, 138(9). <https://doi.org/10.1175/2010MWR3307.1>
+
+Segura, H., Pedruzo-Bagazgoitia, X., Weiss, P., Müller, S. K., Rackow, T., Lee, J., et al. (2025). nextGEMS: entering the era of kilometer-scale Earth system modeling. EGUsphere [preprint]. <https://doi.org/10.5194/egusphere-2025-509>
+ 
+Stevens, B., Satoh, M., Auger, L. et al. (2019). DYAMOND: the DYnamics of the Atmospheric general circulation Modeled On Non-hydrostatic Domains. Prog Earth Planet Sci 6, 61. <https://doi.org/10.1186/s40645-019-0304-z>
+
+Zängl, G., Reinert, D., Ripodas, P., & Baldauf, M. (2015). The ICON (ICOsahedral Non-hydrostatic) modelling framework of DWD and MPI-M: Description of the non-hydrostatic dynamical core. Quarterly Journal of the Royal Meteorological Society, 141(687). <https://doi.org/10.1002/qj.2378>

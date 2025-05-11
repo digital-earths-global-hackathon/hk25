@@ -1,4 +1,4 @@
-# Model Name: Weather Research and Forecast Model
+# Model Name: Weather Research and Forecast Model 
 
 Team Name : NCAR
 
@@ -7,8 +7,6 @@ CONUS404 and SAAG Regional Climate Simulations
 
 ## Contact
 See links below.
-
-## Simulation Details
 
 ### SAAG Simulation
 A high resolution convection-permitting climate change simulation was performed at 4 km grid spacing covering the entire continent of South America. The simulation was performed using Weather Research Forecasting (WRF) model. This dataset is from a 22-year simulation representing the current climate between January 2001 and January 2022. ERA5 data was used to initialize the model and force boundary every 3 hours. This high resolution simulation allowed for much improved representation of topography, convection, and orographic precipitation and snowpack, resulting in a unique dataset that can be used to study the hydroclimate processes in South America.
@@ -56,8 +54,19 @@ A high resolution convection-permitting climate change simulation was performed 
 - Temporal resolution 2D output: 1-hourly + 15 minutes for selected variables (e.g. precipitation)
 - Temporal resolution 3D output: 3-hourly 
 
-- Access and documentation of data at NCAR’s Reseach Data Archive: https://rda.ucar.edu/datasets/d559000/ 
-- Access on glade: /glade/campaign/collections/rda/data/ds559.0/
+- Path to HEALPix/zarr subset of this dataset: /glade/derecho/scratch/digital-earths-hackathon/conus404/healpix/
+- Access on glade (not HEALPix): /glade/campaign/collections/rda/data/ds559.0/
+- Access and documentation of data (not HEALPix) at NCAR’s Reseach Data Archive: https://rda.ucar.edu/datasets/d559000/ 
 - Access and documentation on Microsoft Planetary Computer: https://planetarycomputer.microsoft.com/dataset/conus404#overview 
 
 
+#### CONUS404 References
+
+1. Rasmussen, R.M., F. Chen, C.H. Liu, K. Ikeda, A. Prein, J. Kim, T. Schneider, A. Dai, D. Gochis, A. Dugger, Y. Zhang, A. Jaye, J. Dudhia, C. He, M. Harrold, L. Xue, S. Chen, A. Newman, E. Dougherty, R. Abolafia-Rozenzweig, N. Lybarger, R. Viger, D. Lesmes, K. Skalak, J. Brakebill, D. Cline, K. Dunne, K. Rasmussen, G. Miguez-Macho, 2023: CONUS404: The NCAR-USGS 4-km long-term regional hydroclimate reanalysis over the CONUS. Bulletin American Meteorological Society, 01 August 2023, Pages: E1382 to E1408, DOI: https://doi.org/10.1175/BAMS-D-21-0326.1
+
+2. Rasmussen, R.M., Chen, F., Liu, C., Ikeda, K., Prein, A., Kim, J., Schneider, T., Dai, A., Gochis, D., Dugger, A., Zhang, Y., Jaye, A., Dudhia, J., He, C., Harrold, M., Xue, L., Chen, S., Newman, A., Dougherty, E., Abolafia-Rozenzweig, R., Lybarger, N., R. Viger, Dunne, K., Rasmussen, K., Miguez-Macho, G., 2023, Four-kilometer long-term regional hydroclimate reanalysis over the conterminous United States (CONUS), 1979-2020: U.S. Geological Survey data release, https://doi.org/10.5066/P9PHPK4F
+
+
+#### Citation for Use
+
+Rasmussen, R. M., C. Liu, K. Ikeda, F. Chen, J. Kim, T. Schneider, D. Gochis, A. Dugger, and R. Viger. 2023. Four-kilometer long-term regional hydroclimate reanalysis over the conterminous United States (CONUS). Research Data Archive at the National Center for Atmospheric Research, Computational and Information Systems Laboratory. https://doi.org/10.5065/ZYY0-Y036.
