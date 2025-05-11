@@ -111,7 +111,18 @@ Due to crashes, of technical nature as it turned out later, some adjustments of 
 
 #### Processing
 
-ICON model grid -> HEALPix grids with 3d fields on pressure levels
+The following steps are applied to remap data from the ICON model grid to the HEALPix grids with 3d fields on pressure levels:
+
+1. 3d fields: vertical interpolation to pressure levels
+  - start to 2020-05-27: time steps 06:00, 12:00, 18:00 and 00:00
+  - 2020-05-28 to end: all model time steps
+2. Time mean output:
+  - 2d: all model time steps
+  - 3d: vertically interpolated time steps
+3. Nearest neighbor interpolation from the R2B10 ICON grid (~2.5 km) to the HEALPix z12 grid (~1.6 km)
+4. Arithmetic averaging to lower HEALPix grids: z12 -> z11 -> z10 -> … -> z0
+5. Delete z12
+
 #### Standard output
 
 The standard output follows the [data request](https://digital-earths-global-hackathon.github.io/hosting/technical/data_request.html) with a few deviations:
@@ -120,6 +131,7 @@ The standard output follows the [data request](https://digital-earths-global-hac
 
 ### Additional output
 
+- 3d fields on 5 additional pressure levels: 0.05, 0.1, 0.2, 0.5, and 2 hPa
 - `rva`, relative vorticity in the atmosphere in 1/s, as 3d field on 3 pressure levels: 850, 500 and 300 hPa, 3-hourly, instantaneous
 - Energy content of the atmosphere in J/m2, 3-hourly, instantaneous
   - `egpvi`: geopotential energy content
