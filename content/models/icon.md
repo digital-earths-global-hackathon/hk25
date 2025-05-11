@@ -105,9 +105,6 @@ Due to crashes, of technical nature as it turned out later, some adjustments of 
 | 2020-07-27T00:00:00Z | dt_atm: **20s** -> 18s and dynamics substeps: **5** -> 6 |
 | 2020-08-04T00:00:00Z | dt_atm: 18s -> **20s** and dynamics substeps: 6 -> **5** |
 
-(1) damping of the vertical wind above 44 km height\
-(2) maximum height for cloud microphysics
-
 ---
 
 ### Output
