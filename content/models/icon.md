@@ -17,7 +17,7 @@ The physics setup is however different. The goal of these changes is to explore 
 
 - Cloud microphysics: The fall speed of cloud ice is reduced from 1.25 m/s to 0.4 m/s, thus reduced by a factor of 3.1. This increases the residence time of ice and leads to changes in the balance between the different processes in ice clouds as well as mixed phase clouds. This leads to a moistening and warming in the middle and upper tropical troposphere and a small reduction in global mean precipitation. In addition, however, the cloud cover is increased and the OLR reduced, which changes the OLR by ~10 W/m2.
 
-Further less critical modifications:
+Additional modifications:
 
 - The soil physics is updated, allowing now for dynamical heat capacity and conductivity, and for supercooled water.
 
@@ -151,7 +151,11 @@ The standard output follows the [data request](https://digital-earths-global-hac
 
 #### Output base directory
 
-- levante.dkrz.de:/work/bm1235/k203123/dy3ha-p/experiments/d3hp003/outdata/d3hp003.zarr
+- Catalogue
+  - https://digital-earths-global-hackathon.github.io/catalog/
+
+- levante.dkrz.de
+  - /work/bm1235/k203123/dy3ha-p/experiments/d3hp003/outdata/d3hp003.zarr
 
 - Output fields are stored in individual Zarr2 stores named `<period>_<inst/mean>_z<level>_atm` for different output periods, for instantaneous data and time averaged data, and for different HEALPix zoom levels, where:
   - period: CONST, PT1H, PT3H, PT6H, P1D
