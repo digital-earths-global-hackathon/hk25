@@ -149,12 +149,12 @@ The standard output follows the [data request](https://digital-earths-global-hac
 - Daily means of all fields
   - **Restriction**: For 3d fields, until 2020-05-28 the daily means are the averages of the four 6-hourly instantaneous fields of a day. Only thereafter the daily means include all model time steps of a day.
 
-#### Output base directory
+#### Data access
 
-- Catalogue
+- Data access through catalog
   - https://digital-earths-global-hackathon.github.io/catalog/
 
-- levante.dkrz.de
+- Data access on levante.dkrz.de
   - /work/bm1235/k203123/dy3ha-p/experiments/d3hp003/outdata/d3hp003.zarr
 
 - Output fields are stored in individual Zarr2 stores named `<period>_<inst/mean>_z<level>_atm` for different output periods, for instantaneous data and time averaged data, and for different HEALPix zoom levels, where:
@@ -186,6 +186,8 @@ Available time periods:
   - 202012-202102 (DJF)
 - annual mean
   - 202003-202102
+
+(Similar quickplots exist for the coupled ICON simulation: [ngc4008](https://swiftbrowser.dkrz.de/public/dkrz_e59fa4f2fcac49f2aec87e9b1d1ae0eb/icon_ngc4008/).)
 
 ---
 
