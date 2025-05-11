@@ -191,6 +191,10 @@ Available time periods:
 
 ---
 
+### Contributions
+
+Planning, tuning, etc.:	Marco Giorgetta; running tuning simulations: Monika Esch; running hackathon simulation:	Kalle Wieners; scripting and post-processing: Kalle Wieners, Sid Tibrewal; quickplots and tables: Renate Brokopf; DKRZ resources management: JF Engels
+
 ### Contact
 
 - [Marco Giorgetta](mailto:marco.giorgetta@mpimet.mpg.de)
