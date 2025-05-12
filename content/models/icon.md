@@ -85,9 +85,11 @@ Generalized smooth-level vertical coordinate ([Leuenberger et al., 2010][L2010])
 
 - 14 months from 2020-01-01T00:00:00Z to 2021-03-01T00:00:00Z
 
-#### Simulation name
+#### Simulation names
 
-- d3hp003
+- d3hp003: all 14 months
+- d3hp003feb: 1 day, 2020-02-01, with 15 minutes output (PT15M)
+- d3hp003aug: 1 day, 2020-08-01, with 15 minutes output (PT15M)
 
 #### Simulation modifications
 
@@ -148,6 +150,7 @@ The standard output follows the [data request](https://digital-earths-global-hac
   - `tend_ekvdynvi`: tendency of vertical kinetic energy content due to dynamics
 - Daily means of all fields
   - **Restriction**: For 3d fields, until 2020-05-28 the daily means are the averages of the four 6-hourly instantaneous fields of a day. Only thereafter the daily means include all model time steps of a day.
+- High frequency (15 min) output for 2020-02-01 and 2020-08-01 from separate simulations d3hp003feb and d3hp003aug, respectively.
 
 #### Data access
 
